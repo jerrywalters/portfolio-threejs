@@ -1,36 +1,60 @@
-var scene, camera, renderer;
-var geometry, material, mesh;
+var scene = new THREE.Scene();
+var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
-init();
-animate();
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
 
-function init() {
+var geometry = new THREE.BoxGeometry(1, 1, 1);
+var material = new THREE.MeshBasicMaterial({color: 0x00ff00});
+var cube = new THREE.Mesh(geometry, material);
+scene.add(cube);
 
-    scene = new THREE.Scene();
+camera.position.z = 5;
 
-    camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
-    camera.position.z = 1000;
+var render = function() {
+  requestAnimationFrame(render);
 
-    geometry = new THREE.BoxGeometry( 200, 200, 200 );
-    material = new THREE.MeshBasicMaterial( { color: 0xff0000, wireframe: true } );
+  cube.rotation.x += 0.1;
+  cube.rotation.y += 0.1;
 
-    mesh = new THREE.Mesh( geometry, material );
-    scene.add( mesh );
-
-    renderer = new THREE.WebGLRenderer();
-    renderer.setSize( window.innerWidth, window.innerHeight );
-
-    document.body.appendChild( renderer.domElement );
-
+  renderer.render(scene, camera);
 }
+render();
 
-function animate() {
-
-    requestAnimationFrame( animate );
-
-    mesh.rotation.x += 0.01;
-    mesh.rotation.y += 0.02;
-
-    renderer.render( scene, camera );
-
-}
+// var scene, camera, renderer;
+// var geometry, material, mesh;
+//
+// init();
+// animate();
+//
+// function init() {
+//
+//     scene = new THREE.Scene();
+//
+//     camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
+//     camera.position.z = 1000;
+//
+//     geometry = new THREE.BoxGeometry( 200, 200, 200 );
+//     material = new THREE.MeshBasicMaterial( { color: 0xff0000, wireframe: true } );
+//
+//     mesh = new THREE.Mesh( geometry, material );
+//     scene.add( mesh );
+//
+//     renderer = new THREE.WebGLRenderer();
+//     renderer.setSize( window.innerWidth, window.innerHeight );
+//
+//     document.body.appendChild( renderer.domElement );
+//
+// }
+//
+// function animate() {
+//
+//     requestAnimationFrame( animate );
+//
+//     mesh.rotation.x += 0.01;
+//     mesh.rotation.y += 0.02;
+//
+//     renderer.render( scene, camera );
+//
+// }
