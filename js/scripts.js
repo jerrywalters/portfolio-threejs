@@ -1,5 +1,6 @@
 var container;
 var camera, scene, renderer;
+var loadedObj;
 
 var mouseX = 0, mouseY = 0;
 
@@ -14,8 +15,8 @@ function init() {
   document.body.appendChild(container);
 
   // PerspectiveCamera( fov, aspect, near, far )
-  camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight, 1, 2000);
-  camera.position.z = 250;
+  camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight, 1, 1000);
+  camera.position.z = 50;
 
   // scene
   scene = new THREE.Scene();
@@ -78,9 +79,11 @@ function init() {
         }
       });
       // add object to scene
-      obj.position.y = -95;
+      obj.position.y = 0;
+      obj.position.x = 0;
       scene.add(obj);
 
+      loadedObj = obj;
     },
     // function called when download progresses
     // in this case defined globally
@@ -97,7 +100,7 @@ function init() {
   container.appendChild(renderer.domElement);
 
   //here do hover stuff
-  document.addEventListener('mousemove', onDocumentMouseMove, false);
+  // document.addEventListener('mousemove', onDocumentMouseMove, false);
 
   //
   window.addEventListener('resize', onWindowResize, false);
@@ -115,24 +118,30 @@ function onWindowResize() {
 
 }
 
-function onDocumentMouseMove(e) {
-  mouseX = (e.clientX - windowHalfX) / 2;
-  mouseY = (e.clientY - windowHalfY) / 2;
-}
+// function onDocumentMouseMove(e) {
+//   mouseX = (e.clientX - windowHalfX) / 2;
+//   mouseY = (e.clientY - windowHalfY) / 2;
+// }
 
 //
 
 function animate() {
   // from WebGL, this works like setInterval but stops running when you switch tabs!
   requestAnimationFrame(animate);
+  if(window.isAnimating === true){
+    loadedObj.rotation.x += 2 * Math.PI / 180;
+    loadedObj.rotation.y += 2 * Math.PI / 180;
+  }
   render();
 }
 
-function render() {
-  camera.position.x += (mouseX - camera.position.x) * .05;
-  camera.position.y += (mouseY - camera.position.y) * .05;
 
-  camera.lookAt(scene.position);
+
+function render() {
+  // camera.position.x += (mouseX - camera.position.x) * .05;
+  // camera.position.y += (mouseY - camera.position.y) * .05;
+  //
+  // camera.lookAt(scene.position);
   renderer.render(scene, camera);
 }
 

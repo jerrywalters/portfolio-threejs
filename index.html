@@ -4,10 +4,24 @@
     <meta charset="utf-8">
     <title></title>
     <link rel="stylesheet" src="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   </head>
   <body>
+    <div id="pause" style="width:100px; height:100px; background-color:blue; z-index:10; position:relative;">
 
+    </div>
   </body>
+  <script>
+  $('#pause').mouseenter(function(){
+    window.isAnimating = true;
+    console.log('mouse enter');
+  })
+  .mouseleave(function(){
+    window.isAnimating = false;
+    console.log('mouseleave')
+  });
+
+  </script>
   <script src="js/three.min.js"></script>
   <script src="js/OBJLoader.js"></script>
   <script src="js/scripts.js"></script>
