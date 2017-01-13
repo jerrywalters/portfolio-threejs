@@ -1,6 +1,10 @@
 var container;
 var camera, scene, renderer;
-var loadedObj;
+
+// declare objects that exist
+var courage;
+var stove;
+var broom;
 
 var mouseX = 0, mouseY = 0;
 
@@ -15,7 +19,7 @@ function init() {
   document.body.appendChild(container);
 
   // PerspectiveCamera( fov, aspect, near, far )
-  camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight, 1, 1000);
+  camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight, 1, 5000);
   camera.position.z = 50;
 
   // scene
@@ -67,6 +71,8 @@ function init() {
   // model
 
   var loader = new THREE.OBJLoader(manager);
+
+  // load courage
   loader.load(
     // resource path
     '../objects/courage.obj',
@@ -79,11 +85,67 @@ function init() {
         }
       });
       // add object to scene
-      obj.position.y = 0;
-      obj.position.x = 0;
+      obj.position.y = -7;
+      obj.position.x = 4;
       scene.add(obj);
 
-      loadedObj = obj;
+      courage = obj;
+    },
+    // function called when download progresses
+    // in this case defined globally
+    onProgress,
+    // function called when download error
+    // also defined globally
+    onError
+  );
+
+  // load stove
+  loader.load(
+    // resource path
+    '../objects/stove.obj',
+    // pass the loaded data to the onLoad function - assumed to be object
+    // do some other shit
+    function(obj) {
+      obj.traverse(function(child) {
+        if(child instanceof THREE.Mesh) {
+          child.material.map = texture;
+        }
+      });
+      // add object to scene
+      obj.position.y = 1;
+      obj.position.x = 4;
+      obj.position.z = 43;
+      scene.add(obj);
+
+      stove = obj;
+    },
+    // function called when download progresses
+    // in this case defined globally
+    onProgress,
+    // function called when download error
+    // also defined globally
+    onError
+  );
+
+  // load broom
+  loader.load(
+    // resource path
+    '../objects/broom.obj',
+    // pass the loaded data to the onLoad function - assumed to be object
+    // do some other shit
+    function(obj) {
+      obj.traverse(function(child) {
+        if(child instanceof THREE.Mesh) {
+          child.material.map = texture;
+        }
+      });
+      // add object to scene
+      obj.position.y = -2;
+      obj.position.x = -1500;
+      obj.position.z = -3500;
+      scene.add(obj);
+
+      broom = obj;
     },
     // function called when download progresses
     // in this case defined globally
@@ -128,9 +190,14 @@ function onWindowResize() {
 function animate() {
   // from WebGL, this works like setInterval but stops running when you switch tabs!
   requestAnimationFrame(animate);
-  if(window.isAnimating === true){
-    loadedObj.rotation.x += 2 * Math.PI / 180;
-    loadedObj.rotation.y += 2 * Math.PI / 180;
+  if(window.courageAnimating === true){
+    courage.rotation.x += 2 * Math.PI / 180;
+    courage.rotation.y += 2 * Math.PI / 180;
+  } else if(window.broomAnimating === true) {
+    broom.rotation.x += 1 * Math.PI / 180;
+    broom.rotation.y += 3 * Math.PI / 180;
+  } else if(window.stoveAnimating === true) {
+    stove.rotation.y += 2 * Math.PI / 180;
   }
   render();
 }
@@ -144,69 +211,3 @@ function render() {
   // camera.lookAt(scene.position);
   renderer.render(scene, camera);
 }
-
-
-
-// Rotating cube
-// var scene = new THREE.Scene();
-// var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000);
-
-// var renderer = new THREE.WebGLRenderer();
-// renderer.setSize(window.innerWidth, window.innerHeight);
-// document.body.appendChild(renderer.domElement);
-//
-// var geometry = new THREE.BoxGeometry(1, 1, 1);
-// var material = new THREE.MeshBasicMaterial({color: 0x00ff00});
-// var cube = new THREE.Mesh(geometry, material);
-// scene.add(cube);
-//
-// camera.position.z = 5;
-//
-// var render = function() {
-//   requestAnimationFrame(render);
-//
-//   cube.rotation.x += 0.1;
-//   cube.rotation.y += 0.1;
-//
-//   renderer.render(scene, camera);
-// }
-// render();
-
-
-//test1
-// var scene, camera, renderer;
-// var geometry, material, mesh;
-//
-// init();
-// animate();
-//
-// function init() {
-//
-//     scene = new THREE.Scene();
-//
-//     camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
-//     camera.position.z = 1000;
-//
-//     geometry = new THREE.BoxGeometry( 200, 200, 200 );
-//     material = new THREE.MeshBasicMaterial( { color: 0xff0000, wireframe: true } );
-//
-//     mesh = new THREE.Mesh( geometry, material );
-//     scene.add( mesh );
-//
-//     renderer = new THREE.WebGLRenderer();
-//     renderer.setSize( window.innerWidth, window.innerHeight );
-//
-//     document.body.appendChild( renderer.domElement );
-//
-// }
-//
-// function animate() {
-//
-//     requestAnimationFrame( animate );
-//
-//     mesh.rotation.x += 0.01;
-//     mesh.rotation.y += 0.02;
-//
-//     renderer.render( scene, camera );
-//
-// }

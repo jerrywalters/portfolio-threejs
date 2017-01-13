@@ -7,18 +7,45 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   </head>
   <body>
-    <div id="pause" style="width:100px; height:100px; background-color:blue; z-index:10; position:relative;">
+    <div class="container">
+      <div id="courage" style="display: inline-block; width:100px; height:100px; background-color:blue; z-index:10; position:relative;">
 
+      </div>
+      <div id="stove" style="display: inline-block; width:100px; height:100px; background-color:red; z-index:10; position:relative;">
+
+      </div>
+      <div id="broom" style="display: inline-block; width:100px; height:100px; background-color:purple; z-index:10; position:relative;">
+
+      </div>
     </div>
+
   </body>
   <script>
-  $('#pause').mouseenter(function(){
-    window.isAnimating = true;
-    console.log('mouse enter');
+  $('#courage').mouseenter(function(){
+    window.courageAnimating = true;
+    console.log('courage start');
   })
   .mouseleave(function(){
-    window.isAnimating = false;
-    console.log('mouseleave')
+    window.courageAnimating = false;
+    console.log('courage stop')
+  });
+
+  $('#stove').mouseenter(function(){
+    window.stoveAnimating = true;
+    console.log('stove start');
+  })
+  .mouseleave(function(){
+    window.stoveAnimating = false;
+    console.log('stove stop')
+  });
+
+  $('#broom').mouseenter(function(){
+    window.broomAnimating = true;
+    console.log('broom start');
+  })
+  .mouseleave(function(){
+    window.broomAnimating = false;
+    console.log('broom stop')
   });
 
   </script>

@@ -2,6 +2,6 @@ body {
 	font-family: Monospace;
 	background-color: #000;
 	color: #fff;
-	margin: 0px;
+	margin: none;
 	overflow: hidden;
 }
