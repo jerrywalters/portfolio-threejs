@@ -3,8 +3,9 @@ var camera, scene, raycaster, renderer;
 
 // declare objects that exist
 var courage;
-// var stove;
-// var broom;
+var sthugh;
+var stove;
+var broom;
 var models = [];
 
 var mouseX = 0, mouseY = 0;
@@ -15,9 +16,7 @@ var mouse = new THREE.Vector2();
 var windowHalfX = window.innerWidth / 2;
 var windowHalfY = window.innerheight / 2;
 
-initCourage();
-// initBroom();
-// initStove();
+init();
 animate();
 
 function onWindowResize() {
@@ -67,7 +66,7 @@ function render() {
   	var intersects = raycaster.intersectObjects(models, true);
     if (intersects.length > 0) {
       console.log('intersecting!');
-      intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
+      // intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
       intersects[ 0 ].object.rotation.y += 2 * Math.PI / 180;
     }
   	// for ( var i = 0; i < intersects.length; i++ ) {
