@@ -57,14 +57,39 @@ body {
 	overflow: hidden;
 }
 
+.dog {
+	background-color: blue;
+	height: 100px;
+	color: #fff;
+	opacity: 0.8;
+	z-index: 20;
+	position: absolute;
+	top: 0;
+	-ms-transform: translateX(calc(200%)); /* IE 9 */
+	-webkit-transform: translateX(calc(200%])); /* Safari */
+	transform: translateX(calc(200%));
+	transition: 0.5s;
+	width: 95%;
+	height: 100vh;
+}
+.doggie {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.slideIn {
+	-ms-transform: translateX(8%); /* IE 9 */
+	-webkit-transform: translateX(8%); /* Safari */
+	transform: translateX(8%);
+}
 /* Header */
 
 .header {
 	background-color: #e1f1ff;
 	height: 300px;
 	color: #0c1d00;
-	opacity: 0.5;
-	z-index: 9;
+	opacity: 0.8;
+	z-index: 99;
 	position: relative;
 	-ms-transform: translateY(calc(-100%)); /* IE 9 */
 	-webkit-transform: translateY(calc(-100%])); /* Safari */
@@ -102,7 +127,6 @@ body {
 }
 
 .container {
-	position: absolute;
 }
 canvas {
 	background-color: #fff;

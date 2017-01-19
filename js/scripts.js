@@ -30,7 +30,7 @@ function onWindowResize() {
 
 }
 
-function onMouseMove( event ) {
+function onMouseMove(event) {
 
 	// calculate mouse position in normalized device coordinates
 	// (-1 to +1) for both components
@@ -38,6 +38,15 @@ function onMouseMove( event ) {
 	mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
 	mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
 
+}
+
+function onClick(event) {
+  raycaster.setFromCamera( mouse, camera );
+  var intersects = raycaster.intersectObjects(models, true);
+  if (intersects.length > 0) {
+    $(".dog").toggleClass('slideIn');
+
+  }
 }
 
 function animate() {
@@ -53,10 +62,8 @@ function animate() {
   // } else if(window.stoveAnimating === true) {
   //   stove.rotation.y += 2 * Math.PI / 180;
   // }
-
   render();
 }
-console.log('ray', raycaster.intersectObjects);
 
 function render() {
   // update the picking ray with the camera and mouse position
@@ -69,10 +76,9 @@ function render() {
       // intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
       intersects[ 0 ].object.rotation.y += 2 * Math.PI / 180;
     }
+    // this works too but idk why
   	// for ( var i = 0; i < intersects.length; i++ ) {
-    //
-  	// 	intersects[ i ].object.material.color.set( 0xff0000 );
-    //
+    //   intersects[i].object.rotation.y += 2 * Math.PI / 180;
   	// }
 
   // camera.position.x += (mouseX - camera.position.x) * .05;
@@ -80,8 +86,7 @@ function render() {
   //
   // camera.lookAt(scene.position);
   renderer.render(scene, camera);
-
 }
 
-
+window.addEventListener( 'click', onClick, false );
 window.addEventListener( 'mousemove', onMouseMove, false );

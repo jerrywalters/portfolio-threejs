@@ -50,7 +50,6 @@ function init() {
       texture.needsUpdate = true;
     }
   );
-
   // model
 
   var loader = new THREE.OBJLoader(manager);
@@ -64,7 +63,6 @@ function init() {
     function(obj) {
       obj.traverse(function(child) {
         if(child instanceof THREE.Mesh) {
-          child.material.map = texture;
         }
       });
       // add object to scene
@@ -170,17 +168,14 @@ function init() {
   //   onError
   // );
 
+
   //
   renderer = new THREE.WebGLRenderer();
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setClearColor (0xffdfff, 1);
+  renderer.setClearColor (0xccffee, 1);
   container.appendChild(renderer.domElement);
 
-  //here do hover stuff
-  // document.addEventListener('mousemove', onDocumentMouseMove, false);
-
-  //
   window.addEventListener('resize', onWindowResize, false);
 
 }
