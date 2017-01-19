@@ -174,6 +174,7 @@ function init() {
   renderer = new THREE.WebGLRenderer();
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setClearColor (0xffdfff, 1);
   container.appendChild(renderer.domElement);
 
   //here do hover stuff

@@ -51,7 +51,7 @@ table {
 
 body {
 	font-family: Monospace;
-	background-color: #000;
+	background-color: #fff;
 	color: #fff;
 	margin: 0;
 	overflow: hidden;
@@ -60,25 +60,53 @@ body {
 /* Header */
 
 .header {
-	background-color: #FFF;
+	background-color: #e1f1ff;
 	height: 300px;
 	color: #0c1d00;
-	opacity: .85;
+	opacity: 0.5;
 	z-index: 9;
+	position: relative;
+	-ms-transform: translateY(calc(-100%)); /* IE 9 */
+	-webkit-transform: translateY(calc(-100%])); /* Safari */
+	transform: translateY(calc(-100%));
+	transition: 0.5s;
 }
-.header--hidden {
-	display: none;
+.header__top {
+	background: rgba(255,0,255,.5);
+	opacity: 0.85;
+	height: 300px;
+	z-index: 11;
 }
-.melon-test {
-	position: absolute;
-	height: 50px;
-	width: 50px;
-	top: 100px;
-	left: 50px;
-	background-color: pink;
+/*.header__bottom {
+	background: rgba(0,0,0,0);
+	height: 40px;
+	color: white;
+	padding: 1rem;
+}*/
+.header:hover {
+	-ms-transform: translateY(0); /* IE 9 */
+	-webkit-transform: translateY(0); /* Safari */
+	transform: translateY(0);
+}
+
+.header::after {
+	height: 0px;
+	width: 100%;
+	padding: 1.5rem;
+	opacity: 1;
 	display: flex;
-	justify-content: center;
-	align-items: center;
-	border-radius: 25px;
-	z-index: 99;
+	content: url("img/lemon-purple.svg");
+	color: white;
+	position: absolute;
+	z-index: 11;
+}
+
+.container {
+	position: absolute;
+}
+canvas {
+	background-color: #fff;
+	-ms-transform: translateY(-300px); /* IE 9 */
+	-webkit-transform: translateY(-300px); /* Safari */
+	transform: translateY(-300px);
 }
