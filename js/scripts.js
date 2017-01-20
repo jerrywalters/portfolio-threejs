@@ -44,7 +44,7 @@ function onClick(event) {
   raycaster.setFromCamera( mouse, camera );
   var intersects = raycaster.intersectObjects(models, true);
   if (intersects.length > 0) {
-    $(".dog").toggleClass('slideIn');
+    $(".project-single").toggleClass('slideIn');
 
   }
 }

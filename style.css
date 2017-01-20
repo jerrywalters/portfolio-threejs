@@ -57,7 +57,7 @@ body {
 	overflow: hidden;
 }
 
-.dog {
+.project-single {
 	background-color: blue;
 	height: 100px;
 	color: #fff;
@@ -69,18 +69,31 @@ body {
 	-webkit-transform: translateX(calc(200%])); /* Safari */
 	transform: translateX(calc(200%));
 	transition: 0.5s;
-	width: 95%;
+	width: 92%;
 	height: 100vh;
+	display: flex;
 }
-.doggie {
+.project-images {
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	padding-top: 4rem;
+	overflow-y: scroll;
+	flex-direction: column;
+	width: 60%;
+}
+.project-image__single {
+	width: 60%;
+	margin-bottom: 10%;
+}
+.project-about {
+	padding: 2.5%;
+	width: 35%;
+	background-color: salmon;
 }
 .slideIn {
-	-ms-transform: translateX(8%); /* IE 9 */
-	-webkit-transform: translateX(8%); /* Safari */
-	transform: translateX(8%);
+	-ms-transform: translateX(9%); /* IE 9 */
+	-webkit-transform: translateX(9%); /* Safari */
+	transform: translateX(9%);
 }
 /* Header */
 
