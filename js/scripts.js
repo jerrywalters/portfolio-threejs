@@ -88,5 +88,7 @@ function render() {
   renderer.render(scene, camera);
 }
 
+// one day I will learn linear algebra and it will all make sense
+
 window.addEventListener( 'click', onClick, false );
 window.addEventListener( 'mousemove', onMouseMove, false );

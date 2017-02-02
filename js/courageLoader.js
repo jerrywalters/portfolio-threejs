@@ -70,7 +70,7 @@ function initCourage() {
       // add object to scene
       obj.position.y = 0;
       obj.position.x = 0;
-      models.push(obj);
+
       scene.add(obj);
 
       courage = obj;
