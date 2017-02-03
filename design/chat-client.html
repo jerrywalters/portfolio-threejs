@@ -6,7 +6,21 @@
         <link rel="stylesheet" href="style.css">
         <title>chat-client</title>
     </head>
-    <body>
-        client
+    <body class="chat-styles">
+        <div class="chat-window">
+            <header class="chat-header--client">
+                <span class="uncle-status"></span>
+            </header>   
+            <div>
+                <ul class="client-messages">
+                    <li class="client-messages__item client-messages__item--client"></li>
+                </ul>
+            </div>
+            <form class="chat-form">
+                <input class="chat-form__input" type="text">
+                <div class="chat-form__submit">submit</div>
+            </form>
+        </div>
+
     </body>
 </html>

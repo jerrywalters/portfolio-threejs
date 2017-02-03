@@ -197,3 +197,27 @@ table {
 }
 
 /*
+
+/* Chat Client */
+
+.chat-styles {
+    background-color: #dfefff;
+}
+
+.chat-window {
+    width: 280px;
+    height: 400px;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: #fefefe;
+    border-radius: 4px;
+}
+
+.uncle-status {
+    content: '';
+    background-color: cornflowerblue;
+    height: 4px;
+    width: 4px;
+    border-radius: 2px;
+}
