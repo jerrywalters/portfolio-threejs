@@ -9,18 +9,32 @@
     <body class="chat-styles">
         <div class="chat-window">
             <header class="chat-header--client">
+                <div class="uncle-icon"></div>
+                <h3 class="uncle-name">Uncle Jerry</h3>
                 <span class="uncle-status"></span>
             </header>   
-            <div>
+            <div class="messages-container">
                 <ul class="client-messages">
-                    <li class="client-messages__item client-messages__item--client"></li>
+                    <li class="client-messages__item client-messages__item--client">hey uncle</li>
+                    <li class="client-messages__item client-messages__item--client">hello?</li>
+                    <li class="client-messages__item client-messages__item--admin">yeah</li>
+                    <li class="client-messages__item client-messages__item--admin">i'm here you motherfucker</li>
+                    <li class="client-messages__item client-messages__item--admin">what do you want?</li>
+                    <li class="client-messages__item client-messages__item--client">idk</li>
+                    <li class="client-messages__item client-messages__item--client">sup?</li>
+                    <li class="client-messages__item client-messages__item--admin">why are you even messaging me?</li>
+                    <li class="client-messages__item client-messages__item--admin">are you trying to get more messages in this box to test it out?</li>
+                    <li class="client-messages__item client-messages__item--admin">fuck you, I don't buy it</li>
                 </ul>
             </div>
-            <form class="chat-form">
+            <form class="chat-form chat-form--client">
                 <input class="chat-form__input" type="text">
                 <div class="chat-form__submit">submit</div>
-            </form>
+            </form> 
         </div>
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script>
+        $('.client-messages').scrollTop($('.client-messages')[0].scrollHeight);
+        </script>
     </body>
 </html>

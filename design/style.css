@@ -178,6 +178,12 @@ table {
     padding: 1rem 1rem .5rem 1rem;
     display: flex;
 }
+.chat-form--client {
+    background-color:  #fff;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: .5rem .8rem .5rem 1rem;
+}
 .chat-form__input {
     width: 80%;
     background: transparent;
@@ -203,21 +209,83 @@ table {
 .chat-styles {
     background-color: #dfefff;
 }
-
+.chat-header--client {
+    width: 100%;
+    background-color: #9e66ff;
+    height: 40px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    position: relative;
+    align-items: center;
+    display: flex;
+    box-sizing: border-box;
+    padding: 0 .5rem;
+}
+.uncle-icon {
+    background-color: cornflowerblue;
+    content: '';
+    height: 25px;
+    width: 25px;
+    border: solid 2px darkslateblue;
+    border-radius: 20px;
+}
+.uncle-name {
+    color: white;
+    font-family: 'Helvetica', "sans-serif";
+    font-weight: 200;
+    font-size: .9em;
+    margin-left: .5rem;
+}
+.uncle-status {
+    position: absolute;
+    right: 10px;
+    content: '';
+    background-color: greenyellow;
+    height: 6px;
+    width: 6px;
+    border-radius: 4px;
+}
 .chat-window {
     width: 280px;
     height: 400px;
     position: absolute;
     bottom: 20px;
     right: 20px;
-    background-color: #fefefe;
-    border-radius: 4px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 1px 1px 6px 0px rgba(90, 84, 133,0.3); 
+}
+.messages-container {
+   box-shadow: inset 0px 3px 4px 0px rgba(0,0,0,0.14); 
+}
+.client-messages {
+    padding: .75rem .75rem;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    overflow-y: scroll;
+    max-height: 325px;
+}
+.client-messages::-webkit-scrollbar { 
+    display: none; 
 }
 
-.uncle-status {
-    content: '';
-    background-color: cornflowerblue;
-    height: 4px;
-    width: 4px;
-    border-radius: 2px;
+.client-messages__item {
+    padding: .35rem 1rem;
+    margin-bottom: .8rem;
+    border-radius: 4px;
+    max-width: 70%;
+    font-family: Helvetica, sans-serif;
+    font-weight: 300;
+    font-size: .8em;
+    line-height: 1.25em;
+}
+.client-messages__item--admin {
+    margin-left: auto;
+    background-color: #3F7CF7;
+    color: #fff;
+}
+.client-messages__item--client {
+    margin-right: auto;
+    background-color: #dedede;
 }

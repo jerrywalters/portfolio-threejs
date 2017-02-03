@@ -75,6 +75,7 @@
                     <li class="message-list__item message-list__item--admin">WHAT UP MY GLIP GLOOOPS</li>
                     <li class="message-list__item message-list__item--client">thanks ladies and gentlemen</li>
                     <li class="message-list__item message-list__item--admin">trunk people should be able to get married</li>
+                    <li class="message-list__item message-list__item--admin">well..maybe not</li>
                 </ul>
                 <form class="chat-form">
                     <input class="chat-form__input" type="text">
@@ -82,5 +83,9 @@
                 </form>
             </section>
         </main>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script>
+        $('.message-list').scrollTop($('.message-list')[0].scrollHeight);
+        </script>
     </body>
 </html>
