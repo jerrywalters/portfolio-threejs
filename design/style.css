@@ -178,12 +178,6 @@ table {
     padding: 1rem 1rem .5rem 1rem;
     display: flex;
 }
-.chat-form--client {
-    background-color:  #fff;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    padding: .5rem .8rem .5rem 1rem;
-}
 .chat-form__input {
     width: 80%;
     background: transparent;
@@ -203,7 +197,13 @@ table {
     right: 10px;
 
 }
-
+.chat-form--client {
+    background-color:  #fff;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: .6rem .8rem .6rem 1rem;
+    font-size: .85em;
+}
 /*
 
 /* Chat Client */
@@ -224,11 +224,11 @@ table {
     padding: 0 .5rem;
 }
 .uncle-icon {
-    background-color: cornflowerblue;
+    background-color: deepskyblue;
     content: '';
     height: 25px;
     width: 25px;
-    border: solid 2px darkslateblue;
+    /*border: solid 1px darkslateblue;*/
     border-radius: 20px;
 }
 .uncle-name {
@@ -243,17 +243,19 @@ table {
     right: 10px;
     content: '';
     background-color: greenyellow;
-    height: 6px;
-    width: 6px;
-    border-radius: 4px;
+    /*background-color: transparent;
+    border: 1px solid greenyellow;*/
+    height: 8px;
+    width: 8px;
+    border-radius: 5px;
 }
 .chat-window {
-    width: 280px;
+    width: 290px;
     height: 400px;
     position: absolute;
     bottom: 20px;
     right: 20px;
-    background-color: #efefff;
+    background-color: #f7f7ff;
     border-radius: 5px;
     box-shadow: 1px 3px 8px 0px rgba(90, 84, 133,0.2); 
 }
@@ -274,8 +276,8 @@ table {
 
 .client-messages__item {
     padding: .35rem 1rem;
-    margin-bottom: .8rem;
-    border-radius: 4px;
+    margin-bottom: .7rem;
+    border-radius: 6px;
     max-width: 70%;
     font-family: Helvetica, sans-serif;
     font-weight: 300;
@@ -284,10 +286,10 @@ table {
 }
 .client-messages__item--admin {
     margin-left: auto;
-    background-color: #3F7CF7;
+    background-color: #4784ff;
     color: #fff;
 }
 .client-messages__item--client {
     margin-right: auto;
-    background-color: #dedede;
+    background-color: #e0e0eb;
 }
