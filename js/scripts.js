@@ -75,6 +75,7 @@ function render() {
       console.log('intersecting!');
       // intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
       intersects[ 0 ].object.rotation.y += 2 * Math.PI / 180;
+      intersects[ 0 ].object.rotation.x += 2 * Math.PI / 180;
     }
     // this works too but idk why
   	// for ( var i = 0; i < intersects.length; i++ ) {

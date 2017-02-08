@@ -71,8 +71,11 @@ function init() {
       obj.position.z = 43;
       models.push(obj);
       scene.add(obj);
-
+      console.log('scene:', scene)
       stove = obj;
+
+      console.log('models:', models)
+      console.log('loaded up', stove);
     },
     // function called when download progresses
     // in this case defined globally
@@ -81,63 +84,91 @@ function init() {
     // also defined globally
     onError
   );
+
+  loader.load(
+    // resource path
+    '../objects/raspberrypi.obj',
+    // pass the loaded data to the onLoad function - assumed to be object
+    // do some other shit
+    function(obj) {
+      obj.traverse(function(child) {
+        if(child instanceof THREE.Mesh) {
+        }
+      });
+      // add object to scene
+      obj.position.y = 0;
+      obj.position.x = 0;
+      obj.position.z = 48;
+      models.push(obj);
+      scene.add(obj);
+      console.log('loaded up ras', stove);
+    },
+    // function called when download progresses
+    // in this case defined globally
+    onProgress,
+    // function called when download error
+    // also defined globally
+    onError
+  );
+
+
 
   // load broom
-  loader.load(
-    // resource path
-    '../objects/broom.obj',
-    // pass the loaded data to the onLoad function - assumed to be object
-    // do some other shit
-    function(obj) {
-      obj.traverse(function(child) {
-        if(child instanceof THREE.Mesh) {
-          child.material.map = texture;
-        }
-      });
-      // add object to scene
-      obj.position.y = -2;
-      obj.position.x = -1500;
-      obj.position.z = -3500;
-      models.push(obj);
-      scene.add(obj);
+  // loader.load(
+  //   // resource path
+  //   '../objects/broom.obj',
+  //   // pass the loaded data to the onLoad function - assumed to be object
+  //   // do some other shit
+  //   function(obj) {
+  //     obj.traverse(function(child) {
+  //       if(child instanceof THREE.Mesh) {
+  //         child.material.map = texture;
+  //       }
+  //     });
+  //     // add object to scene
+  //     obj.position.y = -2;
+  //     obj.position.x = -1500;
+  //     obj.position.z = -3500;
+  //     models.push(obj);
+  //     scene.add(obj);
 
-      broom = obj;
-    },
-    // function called when download progresses
-    // in this case defined globally
-    onProgress,
-    // function called when download error
-    // also defined globally
-    onError
-  );
+  //     broom = obj;
+  //   },
+  //   // function called when download progresses
+  //   // in this case defined globally
+  //   onProgress,
+  //   // function called when download error
+  //   // also defined globally
+  //   onError
+  // );
 
   // load courage
-  loader.load(
-    // resource path
-    '../objects/courage.obj',
-    // pass the loaded data to the onLoad function - assumed to be object
-    // do some other shit
-    function(obj) {
-      obj.traverse(function(child) {
-        if(child instanceof THREE.Mesh) {
-          child.material.map = texture;
-        }
-      });
-      // add object to scene
-      obj.position.y = -8;
-      obj.position.x = 0;
-      models.push(obj);
-      scene.add(obj);
+  // loader.load(
+  //   // resource path
+  //   '../objects/courage.obj',
+  //   // pass the loaded data to the onLoad function - assumed to be object
+  //   // do some other shit
+  //   function(obj) {
+  //     obj.traverse(function(child) {
+  //       if(child instanceof THREE.Mesh) {
+  //         child.material.map = texture;
+  //       }
+  //     });
+  //     // add object to scene
+  //     obj.position.y = -8;
+  //     obj.position.x = 0;
+  //     models.push(obj);
+  //     scene.add(obj);
 
-      courage = obj;
-    },
-    // function called when download progresses
-    // in this case defined globally
-    onProgress,
-    // function called when download error
-    // also defined globally
-    onError
-  );
+  //     courage = obj;
+  //   },
+  //   // function called when download progresses
+  //   // in this case defined globally
+  //   onProgress,
+  //   // function called when download error
+  //   // also defined globally
+  //   onError
+  // );
 
   // load sthugh
   // loader.load(
