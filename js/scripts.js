@@ -51,7 +51,6 @@ function onClick(event) {
 
 function animate() {
   // from WebGL, this works like setInterval but stops running when you switch tabs!
-  requestAnimationFrame(animate);
   // if(window.courageAnimating === true){
   //   courage.rotation.x += 2 * Math.PI / 180;
   //   courage.rotation.y += 2 * Math.PI / 180;
@@ -65,12 +64,18 @@ function animate() {
   render();
 }
 
+// var direction = var direction = new THREE.Vector(0.3, 0.5, 0);
+
 function render() {
+  console.log('length', models.length)
   // update the picking ray with the camera and mouse position
   	raycaster.setFromCamera( mouse, camera );
 
   	// calculate objects intersecting the picking ray
   	var intersects = raycaster.intersectObjects(models, true);
+    // for(let i = 0; i < models.length; i++) {
+    //   models[i].position.add(direction);
+    // }
     if (intersects.length > 0) {
       console.log('intersecting!');
       // intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
@@ -85,7 +90,8 @@ function render() {
   // camera.position.x += (mouseX - camera.position.x) * .05;
   // camera.position.y += (mouseY - camera.position.y) * .05;
   //
-  // camera.lookAt(scene.position);
+  // camera.lookAt(scene.position)
+  requestAnimationFrame(animate);
   renderer.render(scene, camera);
 }
 
