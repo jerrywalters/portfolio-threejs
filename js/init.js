@@ -71,11 +71,8 @@ function init() {
       obj.position.z = 43;
       models.push(obj);
       scene.add(obj);
-      console.log('scene:', scene)
+
       stove = obj;
-
-      console.log('models:', models)
-      console.log('loaded up', stove);
     },
     // function called when download progresses
     // in this case defined globally
@@ -85,31 +82,71 @@ function init() {
     onError
   );
 
-  loader.load(
-    // resource path
-    '../objects/raspberrypi.obj',
-    // pass the loaded data to the onLoad function - assumed to be object
-    // do some other shit
-    function(obj) {
-      obj.traverse(function(child) {
-        if(child instanceof THREE.Mesh) {
-        }
-      });
-      // add object to scene
-      obj.position.y = 0;
-      obj.position.x = 0;
-      obj.position.z = 48;
-      models.push(obj);
-      scene.add(obj);
-      console.log('loaded up ras', stove);
-    },
-    // function called when download progresses
-    // in this case defined globally
-    onProgress,
-    // function called when download error
-    // also defined globally
-    onError
-  );
+  var userOpts	= {
+    range		: 2,
+    duration	: 2500,
+    delay		: 200,
+    easing		: 'Elastic.EaseInOut'
+  };
+
+  function setUpTween() {
+
+    
+    var update = function(){
+      stove.position.x = current.x;
+      console.log('updating!');
+    }
+    // var position = { x : 3, y: 1.2 };
+    // var target = { x: -1, y: -2 };
+    var current	= { x: -userOpts.range };
+
+    TWEEN.removeAll();
+
+    var tweenTo = new TWEEN.Tween(current)
+      .to({x: +userOpts.range}, 2000)
+      .delay(200)
+      .easing(TWEEN.Easing.Elastic.InOut)
+      .onUpdate(update);
+
+    var tweenBack = new TWEEN.Tween(current)
+      .to({x: -userOpts.range}, 2000)
+      .delay(200)
+      .easing(TWEEN.Easing.Elastic.InOut)
+      .onUpdate(update);
+
+    tweenTo.chain(tweenBack);
+    tweenBack.chain(tweenTo);
+    tweenTo.start();
+
+  }
+
+  setUpTween();
+
+  // loader.load(
+  //   // resource path
+  //   '../objects/raspberrypi.obj',
+  //   // pass the loaded data to the onLoad function - assumed to be object
+  //   // do some other shit
+  //   function(obj) {
+  //     obj.traverse(function(child) {
+  //       if(child instanceof THREE.Mesh) {
+  //       }
+  //     });
+  //     // add object to scene
+  //     obj.position.y = 0;
+  //     obj.position.x = 0;
+  //     obj.position.z = 48;
+  //     models.push(obj);
+  //     scene.add(obj);
+  //     console.log('loaded up ras', stove);
+  //   },
+  //   // function called when download progresses
+  //   // in this case defined globally
+  //   onProgress,
+  //   // function called when download error
+  //   // also defined globally
+  //   onError
+  // );
 
 
 

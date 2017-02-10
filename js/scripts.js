@@ -67,8 +67,7 @@ function animate() {
 // var direction = var direction = new THREE.Vector(0.3, 0.5, 0);
 
 function render() {
-  console.log('length', models.length)
-  // update the picking ray with the camera and mouse position
+    // update the picking ray with the camera and mouse position
   	raycaster.setFromCamera( mouse, camera );
 
   	// calculate objects intersecting the picking ray
@@ -92,6 +91,11 @@ function render() {
   //
   // camera.lookAt(scene.position)
   requestAnimationFrame(animate);
+  TWEEN.update();
+  // tween.onUpdate(function(){
+  //   stove.position.x = position.x;
+  //   stove.position.y = position.y;
+  // });
   renderer.render(scene, camera);
 }
 
