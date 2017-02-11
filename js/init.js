@@ -69,10 +69,13 @@ function init() {
       obj.position.y = 1.2;
       obj.position.x = 3;
       obj.position.z = 43;
+      obj.rotation.y += 20 * Math.PI / 180;
+      obj.rotation.x += 30 * Math.PI / 180;
       models.push(obj);
       scene.add(obj);
 
       stove = obj;
+      setUpTween(stove);
     },
     // function called when download progresses
     // in this case defined globally
@@ -83,36 +86,35 @@ function init() {
   );
 
   var userOpts	= {
-    range		: 2,
+    range		: .035,
     duration	: 2500,
     delay		: 200,
     easing		: 'Elastic.EaseInOut'
   };
 
-  function setUpTween() {
+function setUpTween(object) {
+  var update = function(){
+    object.position.x = current.x;
+    object.position.y = current.y;
+    console.log('updating!');
+  }
+  // var position = { x : 3, y: 1.2 };
+  // var target = { x: -1, y: -2 };
+  var current	= { x: -userOpts.range, y: -userOpts.range };
 
-    
-    var update = function(){
-      stove.position.x = current.x;
-      console.log('updating!');
-    }
-    // var position = { x : 3, y: 1.2 };
-    // var target = { x: -1, y: -2 };
-    var current	= { x: -userOpts.range };
+  TWEEN.removeAll();
 
-    TWEEN.removeAll();
+  var tweenTo = new TWEEN.Tween(current)
+    .to({x: +userOpts.range, y: +userOpts.range}, 1700)
+    .delay(10)
+    .easing(TWEEN.Easing.Sinusoidal.InOut)
+    .onUpdate(update);
 
-    var tweenTo = new TWEEN.Tween(current)
-      .to({x: +userOpts.range}, 2000)
-      .delay(200)
-      .easing(TWEEN.Easing.Elastic.InOut)
-      .onUpdate(update);
-
-    var tweenBack = new TWEEN.Tween(current)
-      .to({x: -userOpts.range}, 2000)
-      .delay(200)
-      .easing(TWEEN.Easing.Elastic.InOut)
-      .onUpdate(update);
+  var tweenBack = new TWEEN.Tween(current)
+    .to({x: -userOpts.range, y: -userOpts.range}, 1700)
+    .delay(10)
+    .easing(TWEEN.Easing.Sinusoidal.InOut)
+    .onUpdate(update);
 
     tweenTo.chain(tweenBack);
     tweenBack.chain(tweenTo);
@@ -120,7 +122,23 @@ function init() {
 
   }
 
-  setUpTween();
+  // draw heart 
+  var heartShape = new THREE.Shape();
+
+  heartShape.moveTo( 25, 25 );
+  heartShape.bezierCurveTo( 25, 25, 20, 0, 0, 0 );
+  heartShape.bezierCurveTo( 30, 0, 30, 35,30,35 );
+  heartShape.bezierCurveTo( 30, 55, 10, 77, 25, 95 );
+  heartShape.bezierCurveTo( 60, 77, 80, 55, 80, 35 );
+  heartShape.bezierCurveTo( 80, 35, 80, 0, 50, 0 );
+  heartShape.bezierCurveTo( 35, 0, 25, 25, 25, 25 );
+
+  var extrudeSettings = { amount: 8, bevelEnabled: true, bevelSegments: 2, steps: 2, bevelSize: 1, bevelThickness: 1 };
+
+  var heartGeometry = new THREE.ExtrudeGeometry( heartShape, extrudeSettings );
+
+  var heart = new THREE.Mesh( heartGeometry, new THREE.MeshPhongMaterial() );
+  scene.add(heart);
 
   // loader.load(
   //   // resource path

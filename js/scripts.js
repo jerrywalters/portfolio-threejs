@@ -19,6 +19,7 @@ var windowHalfY = window.innerheight / 2;
 init();
 animate();
 
+
 function onWindowResize() {
   windowHalfX = window.innerWidth/2;
   windowHalfY = window.innerHeight/2;
@@ -50,17 +51,6 @@ function onClick(event) {
 }
 
 function animate() {
-  // from WebGL, this works like setInterval but stops running when you switch tabs!
-  // if(window.courageAnimating === true){
-  //   courage.rotation.x += 2 * Math.PI / 180;
-  //   courage.rotation.y += 2 * Math.PI / 180;
-  // }
-  // } else if(window.broomAnimating === true) {
-  //   broom.rotation.x += 1 * Math.PI / 180;
-  //   broom.rotation.y += 3 * Math.PI / 180;
-  // } else if(window.stoveAnimating === true) {
-  //   stove.rotation.y += 2 * Math.PI / 180;
-  // }
   render();
 }
 
@@ -78,8 +68,8 @@ function render() {
     if (intersects.length > 0) {
       console.log('intersecting!');
       // intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
-      intersects[ 0 ].object.rotation.y += 2 * Math.PI / 180;
-      intersects[ 0 ].object.rotation.x += 2 * Math.PI / 180;
+      intersects[ 0 ].object.rotation.y += 1.5 * Math.PI / 180;
+      // intersects[ 0 ].object.rotation.x += 2 * Math.PI / 180;
     }
     // this works too but idk why
   	// for ( var i = 0; i < intersects.length; i++ ) {
